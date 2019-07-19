@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import EnterName from './src/screens/EnterName';
+import ChatPage from './src/screens/ChatRoom/'
 import { Provider } from 'react-redux';
 import allReducers from "./src/redux/reducers";
 
@@ -12,14 +13,17 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(allReducers, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
+import {createStackNavigator, createAppContainer} from 'react-navigation';
+const MainNavigator = createStackNavigator({
+  Home: {screen: EnterName},
+  Chat: {screen: ChatPage},
+}, {initialRouteName: 'Home'});
+const AppContainer = createAppContainer(MainNavigator);
 
 export default App = () => {
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-                  <Text>Open up App.js to start working on your app!</Text>
-                  <EnterName />
-        </View>
+        <AppContainer />
       </Provider>
     )
 }

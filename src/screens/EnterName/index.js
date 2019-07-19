@@ -3,12 +3,22 @@ import { View, Text, TextInput, Button } from 'react-native';
 import { connect } from 'react-redux'
 import { changeName, createUserRequest } from '../../../src/redux/actions'
 
+
 class EnterPage extends PureComponent {
-    _handlePress = (event) => {
-    };
+  static navigationOptions = {
+    title: 'Welcome',
+  };
+
+/*  handleEnterToRoom = () => {
+    const { name, text, changeText, createUserRequest } = this.props;
+    if (!name) return
+
+  };*/
+
     render() {
         console.log(this.props.loading);
-        const { name, text, changeText, createUserRequest } = this.props;
+        const { name, text, changeText, createUserRequest, navigation: { navigate } } = this.props;
+
 
         return (
             <View
@@ -25,13 +35,14 @@ class EnterPage extends PureComponent {
                 />
                 <Button
                     style={{borderWidth: 1, borderColor: 'blue'}}
-                    onPress={createUserRequest}
+                    onPress={() => navigate('Chat')}
                     title='Enter room'>
                 </Button>
             </View>
         );
     }
 }
+
 const mapStateToProps = (state) => ({
   text: state.user.text,
   loading: state.user.loading,

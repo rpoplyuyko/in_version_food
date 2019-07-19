@@ -1,29 +1,50 @@
 import React, { PureComponent } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import {connect} from "react-redux";
+import { changeText, createUserRequest } from "../../redux/actions";
 
-export default class ChatPage extends PureComponent {
+const styles = StyleSheet.create({
+  container: {
+    fontFamily:'Roboto', flexDirection: 'row', alignItems:'stretch'
+  },
+  textInput: {
+    flex: 4, borderColor: 'gray', borderWidth: 1, color: 'gray', textAlign:'center'
+  },
+  buttons: {
+    flex: 1, borderWidth: 1, borderColor: 'blue'
+  }
+});
+
+class ChatPage extends PureComponent {
   render() {
-    console.log(this.state.text);
+    console.log(this.props.text);
+    const { text, changeText } = this.props;
     return (
       <View
-        style={{fontFamily:'Roboto', alignItems:'center'}}>
-        <Text>Your name will be: </Text><Text>{this.state.name ? this.state.name : this.state.text }</Text>
-        <Text>
-          Enter name
-        </Text>
+        style={styles.container}>
         <TextInput
-          style={{height: 40, width:250, borderColor: 'gray', borderWidth: 1, color: 'gray', textAlign:'center'}}
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text}
-          placeholder="Example3000"
-        />
-        <Button
-          style={{borderWidth: 1, borderColor: 'blue'}}
-          onPress={this._handlePress}
-          title='Enter room'>
+          style={styles.textInput}
+          onChangeText={changeText}
+          value={text}
+          placeholder="Enter your message"
+        /><Button
+          style={styles.buttons}
+          onPress={createUserRequest}
+          title='Send message'>
         </Button>
       </View>
 
     );
   }
 }
+const mapStateToProps = (state) => ({
+  text: state.user.text,
+  loading: state.user.loading,
+  name: state.user.name,
+  userId: state.user.userId,
+});
+const mapDispatchToProps = {
+  changeText: changeText,
+  createUserRequest: createUserRequest,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);
