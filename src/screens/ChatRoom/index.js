@@ -1,11 +1,14 @@
 import React, { PureComponent } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import {connect} from "react-redux";
 import { changeText, createUserRequest } from "../../redux/actions";
+import ration from "../ration"
 
 const styles = StyleSheet.create({
   container: {
-    fontFamily:'Roboto', flexDirection: 'row', alignItems:'stretch'
+    fontFamily:'Roboto',
+    flexDirection: 'column',
+    alignItems:'stretch'
   },
   textInput: {
     flex: 4, borderColor: 'gray', borderWidth: 1, color: 'gray', textAlign:'center'
@@ -17,21 +20,76 @@ const styles = StyleSheet.create({
 
 class ChatPage extends PureComponent {
   render() {
-    console.log(this.props.text);
-    const { text, changeText } = this.props;
+    const {
+      sex,
+      age,
+      weight,
+      height,
+    } = this.props;
+
+    function calculateMaleCalories(age, weight, height) {
+      return 10 * weight + 6.25 * height - 5 * age + 5;
+    }
+
+    function calculateFemaleCalories(age, weight, height) {
+      return 10 * weight + 6.25 * height - 5 * age - 161;
+    }
+
+    const calories = sex === 'male' ? calculateMaleCalories(age, weight, height) : calculateFemaleCalories(age, weight, height);
+    const sexRation = sex === 'male' ? ration.male : ration.female;
+
+    function getRation() {
+      return sexRation.map((item) => {
+        return Object.keys(item).map( (key) => {
+          return <View
+              key={key}
+              style={{
+                fontFamily:'Roboto',
+                flexDirection: 'row',
+                alignItems:'start',
+                marginHorizontal: 15,
+                marginVertical: 5,
+              }}
+          >
+            <Text
+                style={{
+                  fontWeight: 'bold',
+                  width: "30%",
+                }}
+            >
+              {key}:
+            </Text>
+            <Text
+                style={{
+                  width: "70%",
+                }}>
+              {item[key]}
+            </Text>
+          </View>;
+        });
+      });
+    }
+
     return (
       <View
         style={styles.container}>
-        <TextInput
-          style={styles.textInput}
-          onChangeText={changeText}
-          value={text}
-          placeholder="Enter your message"
-        /><Button
-          style={styles.buttons}
-          onPress={createUserRequest}
-          title='Send message'>
-        </Button>
+          <ScrollView>
+          <Text
+              style={{
+                textAlign:'center',
+                margin: 15,
+                fontSize: 20,
+              }}
+          >Ваша суточная норма составляет { calories } калорий! </Text>
+            <Text
+                style={{
+                  textAlign:'center',
+                  margin: 15,
+                  fontSize: 16,
+                }}
+            > Рекомендуемый рацион: </Text>
+          <View>{getRation()}</View>
+          </ScrollView>
       </View>
 
     );
@@ -40,8 +98,10 @@ class ChatPage extends PureComponent {
 const mapStateToProps = (state) => ({
   text: state.user.text,
   loading: state.user.loading,
-  name: state.user.name,
-  userId: state.user.userId,
+  sex: state.user.sex,
+  age: state.user.age,
+  height: state.user.height,
+  weight: state.user.weight,
 });
 const mapDispatchToProps = {
   changeText: changeText,
