@@ -1,4 +1,4 @@
-import React, { memo, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { connect } from 'react-redux'
@@ -82,7 +82,7 @@ class EnterPage extends PureComponent {
                     placeholder="Ваш возраст в годах"
                 />
                 <Button
-                    style={{borderWidth: 1, borderColor: 'blue'}}
+                    style={{borderWidth: 1, borderColor: 'blue', marginHorizontal: 15}}
                     onPress={() => navigate('Chat')}
                     disabled={disabling}
                     title='Рассчитать'>

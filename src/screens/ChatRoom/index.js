@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { Card, List, Title, Paragraph } from 'react-native-paper';
 import {connect} from "react-redux";
 import { changeText, createUserRequest } from "../../redux/actions";
-import ration from "../ration"
+import ration from "../ration2"
 
 const styles = StyleSheet.create({
   container: {
@@ -39,35 +40,50 @@ class ChatPage extends PureComponent {
     const sexRation = sex === 'male' ? ration.male : ration.female;
 
     function getRation() {
-      return sexRation.map((item) => {
-        return Object.keys(item).map( (key) => {
-          return <View
-              key={key}
-              style={{
-                fontFamily:'Roboto',
-                flexDirection: 'row',
-                alignItems:'start',
-                marginHorizontal: 15,
-                marginVertical: 5,
-              }}
-          >
-            <Text
-                style={{
-                  fontWeight: 'bold',
-                  width: "30%",
-                }}
-            >
-              {key}:
-            </Text>
-            <Text
-                style={{
-                  width: "70%",
-                }}>
-              {item[key]}
-            </Text>
-          </View>;
-        });
-      });
+         return sexRation.map((item) => {
+          const title = `День ${item.dayNumber}`;
+          const image = {
+              uri: `https://source.unsplash.com/1600x900/?food,health,${item.dayNumber}`
+          };
+          return <Card style={{
+              shadowColor: "#000",
+              shadowOffset: {
+                  width: 0,
+                  height: 3,
+              },
+              shadowOpacity: 0.27,
+              shadowRadius: 4.65,
+
+              elevation: 6,
+              margin: '5%',
+          }}
+          key={item.dayNumber}>
+              <Card.Title title={title}/>
+              <Card.Content>
+              <Card.Cover source={image} />
+                  <Title>Завтрак</Title>
+                  {item.breakfast.map((dish, ind) => {
+                     return <Paragraph key={ind}>- {dish.name} ({dish.calories} кал на 100гр); </Paragraph>
+                  })}
+                  <Paragraph style={{fontStyle: 'italic'}}>Примерно {Math.round(calories * 0.2)} калорий</Paragraph>
+                  <Title>Обед</Title>
+                  {item.dinner.map((dish, ind) => {
+                      return <Paragraph key={ind}>- {dish.name} ({dish.calories} кал на 100гр);</Paragraph>
+                  })}
+                  <Paragraph style={{fontStyle: 'italic'}}>Примерно {Math.round(calories * 0.35)} калорий</Paragraph>
+                  <Title>Полдник</Title>
+                  {item.afternoon.map((dish, ind) => {
+                      return <Paragraph key={ind}>- {dish.name} ({dish.calories} кал на 100гр);</Paragraph>
+                  })}
+                  <Paragraph style={{fontStyle: 'italic'}}>Примерно {Math.round(calories * 0.15)} калорий</Paragraph>
+                  <Title>Ужин</Title>
+                  {item.evening.map((dish, ind) => {
+                      return <Paragraph key={ind}>- {dish.name} ({dish.calories} кал на 100гр);</Paragraph>
+                  })}
+                  <Paragraph style={{fontStyle: 'italic'}}>Примерно {Math.round(calories * 0.30)} калорий</Paragraph>
+              </Card.Content>
+          </Card>
+         });
     }
 
     return (
@@ -88,6 +104,7 @@ class ChatPage extends PureComponent {
                   fontSize: 16,
                 }}
             > Рекомендуемый рацион: </Text>
+
           <View>{getRation()}</View>
           </ScrollView>
       </View>

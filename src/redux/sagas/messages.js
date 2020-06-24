@@ -18,7 +18,6 @@ function* sendMessage() {
     };
 
     const response = yield call(axios, options);
-    console.log('response', response.data);
     yield put(createMessageSuccess(response.data));
 
 

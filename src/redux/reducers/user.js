@@ -19,7 +19,6 @@ function User(state = INITIAL_STATE, action) {
   const {type, payload ={}} = action;
   switch (type) {
     case CHANGE_SEX: {
-      console.log('>>> payload', payload);
       return {
         ...state,
         sex: payload,

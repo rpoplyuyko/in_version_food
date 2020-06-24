@@ -4,17 +4,12 @@
     <list default="true" id="f42c0d3e-16f4-4393-8f76-1b399d5d695e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/splash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actionsConst/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actionsConst/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sagas/messages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/messages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sagas/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/ChatRoom/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/ChatRoom/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/ChatRoom/styles.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/EnterName/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/EnterName/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/EnterName/styles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/ration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/ration.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +38,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -53,6 +48,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
@@ -84,7 +80,9 @@
       <workItem from="1563431175506" duration="61000" />
       <workItem from="1563457417564" duration="4205000" />
       <workItem from="1563517674428" duration="22986000" />
-      <workItem from="1592432730159" duration="14871000" />
+      <workItem from="1592432730159" duration="16286000" />
+      <workItem from="1592587920783" duration="11843000" />
+      <workItem from="1592809716553" duration="23000" />
     </task>
     <servers />
   </component>
@@ -92,10 +90,15 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="630" y="252" width="659" height="518" key="find.popup" timestamp="1592443669655">
+    <state x="483" y="78" key="SettingsEditor" timestamp="1592607936154">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
-    <state x="630" y="252" width="659" height="518" key="find.popup/0.23.1920.977@0.23.1920.977" timestamp="1592443669655" />
+    <state x="483" y="78" key="SettingsEditor/0.23.1920.977@0.23.1920.977" timestamp="1592607936154" />
+    <state x="483" y="78" key="SettingsEditor/0.23.1920.982@0.23.1920.982" timestamp="1592454912501" />
+    <state x="630" y="252" width="659" height="518" key="find.popup" timestamp="1592607635168">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="630" y="252" width="659" height="518" key="find.popup/0.23.1920.977@0.23.1920.977" timestamp="1592607635168" />
     <state x="625" y="238" width="670" height="676" key="search.everywhere.popup" timestamp="1592443995525">
       <screen x="0" y="23" width="1920" height="977" />
     </state>

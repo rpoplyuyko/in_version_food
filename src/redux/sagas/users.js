@@ -18,7 +18,6 @@ function* createUser() {
     };
 
     const response = yield call(axios, options);
-    console.log('response', response.data);
     yield put(createUserSuccess(response.data));
 
 
